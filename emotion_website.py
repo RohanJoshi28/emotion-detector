@@ -166,6 +166,10 @@ def gen():
 def video_feed():
     return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/about')
+def about():
+  return render_template('about.html')
+
 
   
 app.run()
