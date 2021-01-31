@@ -1,0 +1,21 @@
+<!doctype html>
+    <html>
+      <head>
+      </head>
+      <body>
+        <h2>Welcome to the Emotion Detector Project by Rohan Joshi and Christopher Rodriguez</h2>
+        The goal of this project is to classify emotions into 7 main classes (some of the most common emotions). <br>
+        Once you enter an image, a convolutional neural network will classify your
+        image into one of these classes. <br> This project uses the FER2013 dataset to train 
+         (<a href = "https://www.kaggle.com/ananthu017/emotion-detection-fer">here</a>)
+        so please put the images in that format if you hope to obtain accurate results</p>
+        <p>Please upload files here</p>
+        <form method="POST" action="" enctype="multipart/form-data">
+          <p><input type="file" name="file"></p>
+          <p><input type="submit" value="Submit"></p>
+        </form>
+
+    <h1>Video Streaming Emotion Classification</h1>
+    <img src="{{ url_for('video_feed') }}">
+      </body>
+</html>
