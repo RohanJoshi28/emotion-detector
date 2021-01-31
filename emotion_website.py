@@ -110,6 +110,11 @@ def home():
     <html>
       <head>
         <title>File Upload</title>
+        <style>
+            body {background-color; rgb(200, 200, 150); text-align: center;}
+            h1 {font-family; "Noto Sans Kr", sans-serif; text-align: center;}
+            p {color: green; text-align: center}
+        </style>
       </head>
       <body>
         <h1>Results</h1>
