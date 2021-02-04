@@ -66,7 +66,7 @@ class neural_net(nn.Module):
 
         return pred
         
-        
+        git
 #defines neural network object
 emotion_net = neural_net()
 
