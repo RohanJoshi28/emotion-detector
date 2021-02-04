@@ -71,7 +71,7 @@ class neural_net(nn.Module):
 emotion_net = neural_net()
 
 #uploads weights previously trained on kaggle
-state_dict = torch.load("Midyear Project\emotion_net7.pth")
+state_dict = torch.load("emotion_net7.pth")
 
 #loads the weights to the neural network and turns the neural network to evaluation mode
 emotion_net.load_state_dict(state_dict)
