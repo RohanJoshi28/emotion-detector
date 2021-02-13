@@ -71,7 +71,7 @@ class neural_net(nn.Module):
 emotion_net = neural_net()
 
 #uploads weights previously trained on kaggle
-state_dict = torch.load("C:\RJoshi\Midyear Project\emotion_net7.pth")
+state_dict = torch.load("emotion_net7.pth")
 
 #loads the weights to the neural network and turns the neural network to evaluation mode
 emotion_net.load_state_dict(state_dict)
@@ -113,13 +113,19 @@ def home():
       </head>
       <body style = "background-color: lightgray; text-align: center;">
         <h1 style = "font-family: 'Noto Sans Kr', sans-serif: text-align: center;">Results</h1>
-        <p>The probability you are <b>{class_dict[order_of_max[0]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[0]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[1]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[1]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[2]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[2]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[3]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[3]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[4]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[4]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[5]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[5]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
-        <p>The probability you are <b>{class_dict[order_of_max[6]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[6]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "color: red">The probability you are <b>{class_dict[order_of_max[0]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[0]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: orange">The probability you are <b>{class_dict[order_of_max[1]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[1]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: yellow">The probability you are <b>{class_dict[order_of_max[2]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[2]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: green">The probability you are <b>{class_dict[order_of_max[3]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[3]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: blue">The probability you are <b>{class_dict[order_of_max[4]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[4]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: indigo">The probability you are <b>{class_dict[order_of_max[5]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[5]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <br>
+        <p style = "color: violet">The probability you are <b>{class_dict[order_of_max[6]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[6]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
 
       </body>
     </html>'''
