@@ -110,22 +110,23 @@ def home():
     <html>
       <head>
         <title>File Upload</title>
+
       </head>
-      <body style = "background-color: lightgray; text-align: center;">
-        <h1 style = "font-family: 'Noto Sans Kr', sans-serif: text-align: center;">Results</h1>
-        <p style = "color: red">The probability you are <b>{class_dict[order_of_max[0]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[0]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+      <body style = "background-color: #FFCCBC; text-align: center;">
+        <h1 style = "font-family: serif; text-align: center;">Results</h1>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[0]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[0]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}% confidence</p>
         <br>
-        <p style = "color: orange">The probability you are <b>{class_dict[order_of_max[1]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[1]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[1]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[1]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}% confidence</p>
         <br>
-        <p style = "color: yellow">The probability you are <b>{class_dict[order_of_max[2]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[2]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[2]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[2]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
         <br>
-        <p style = "color: green">The probability you are <b>{class_dict[order_of_max[3]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[3]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[3]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[3]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
         <br>
-        <p style = "color: blue">The probability you are <b>{class_dict[order_of_max[4]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[4]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[4]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[4]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
         <br>
-        <p style = "color: indigo">The probability you are <b>{class_dict[order_of_max[5]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[5]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[5]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[5]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
         <br>
-        <p style = "color: violet">The probability you are <b>{class_dict[order_of_max[6]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[6]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%</b> confidence</p>
+        <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[6]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[6]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
 
       </body>
     </html>'''
