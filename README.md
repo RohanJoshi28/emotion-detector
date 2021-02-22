@@ -1,1 +1,1 @@
-This project uses facial detection and emotion classification on a website. Creators are Rohan Joshi and Christopher Rodriguez.
+This project uses facial detection and emotion classification on a website. Creators are Rohan Joshi and Christopher Rodriguez. Our project combines live streaming of emotion detection and uploading photos for emotion detection with a flask app
