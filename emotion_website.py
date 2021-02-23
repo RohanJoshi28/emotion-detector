@@ -127,7 +127,11 @@ def home():
         <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[5]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[5]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
         <br>
         <p style = "font-size: 20px; font-family: serif;">The probability you are {class_dict[order_of_max[6]]} is predicted at {round(F.softmax(emotion_arr).detach().numpy().flatten()[order_of_max[6]]/F.softmax(emotion_arr).detach().numpy().sum()*100, 2)}%  confidence</p>
+<<<<<<< HEAD
         <a href = "/">Go back to home</a>
+=======
+
+>>>>>>> 184a54da5a6e779ad063350334e36196c84ea22d
       </body>
     </html>'''
 
