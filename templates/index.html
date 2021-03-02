@@ -10,6 +10,11 @@
         body{
           background-color: #A8D0E6;
         }
+        a{
+          color: #24305E;
+          font-size: 18px;
+          padding: 8px;
+        }
       </style>
       </head>
       <body>
@@ -29,6 +34,11 @@
         <form method="POST" action="" enctype="multipart/form-data">
           <p style = "color: #F76C6C; border: 2px solid #F76C6C; outline-style: solid;"><input type="file" name="file"></p>
           <p style = "color: #F76C6C; border: 2px solid #F76C6C; outline-style: solid;"><input type="submit" value="Submit"></p>
+        </form>
+
+        <a href = "/about">About our project</a>
+        <a href = "/creators">About the Creators</a>
+        <a href = "/generating">Generate Images of Faces</a>
 
     <h1 style = "text-align: center;">Video Streaming Emotion Classification</h1>
     <center><img src="{{ url_for('video_feed') }}"></center>
