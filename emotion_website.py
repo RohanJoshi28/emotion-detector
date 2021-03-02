@@ -140,7 +140,6 @@ def home():
 
 #generates a frame for video streaming
 def gen():
-  print("hello")
   #turns on webcam
   video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
