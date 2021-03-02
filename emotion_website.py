@@ -136,9 +136,9 @@ def home():
 
 #generates a frame for video streaming
 def gen():
-
+  print("hello")
   #turns on webcam
-  video_capture = cv2.VideoCapture(0)
+  video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
   #defines opencv's built in facial detection
   faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -146,7 +146,6 @@ def gen():
   #while the app is running
   while True:
       # Capture frame-by-frame
-      
       #reads the next frame
       ret, frame = video_capture.read()
       
