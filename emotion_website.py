@@ -178,9 +178,5 @@ def about():
 def creators():
   return render_template('creators.html')
 
-@app.route('/flow')
-def flow():
-  return render_template('flow.html')
-
 if __name__ == "__main__":
   app.run()
