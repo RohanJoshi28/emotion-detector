@@ -170,13 +170,16 @@ def gen():
 def video_feed():
     return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+#about page to show what the project is about
 @app.route('/about')
 def about():
   return render_template('about.html')
 
+#creators page to show who made the website
 @app.route('/creators')
 def creators():
   return render_template('creators.html')
 
+#if the file running is this file, then run the app
 if __name__ == "__main__":
   app.run()
