@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
-from flask import Flask, request, render_template, Response
+from flask import Flask, request, render_template, Response, url_for
 from flask_ngrok import run_with_ngrok
 from PIL import Image
 import cv2
