@@ -1,0 +1,26 @@
+<!doctype html>
+    <html>
+      <head>
+      <style>
+          body{
+              background-color: #5CDB95;
+          }
+          h1{
+             color:#ec4d0ee8;
+          }
+      </style>
+      </head>
+      <body>
+          <center>
+          <h1>Generating Images</h1>
+          <p>This is where a face generator generates images of faces with random emotions. </p>
+          <form method = "POST">
+          <label for="generate_image">Click here to generate an image</label>
+          <input type = "submit" value = "Submit" name = "generate_image">
+          </form>
+          {% if image != False %}
+          <img src="{{url_for('static', filename='generated_image.png')}}" width = 300 height = 300/>
+          {% endif %}
+         </center>
+      </body>
+</html>

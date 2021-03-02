@@ -65,17 +65,59 @@ class neural_net(nn.Module):
         pred = self.linear2(pred)
 
         return pred
+
+#defines generator architecture for generating images of faces 
+class Generator(nn.Module):
+    #Initializing the weight matricies of the generator
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(512, 1024)
+        self.fc2 = nn.Linear(1024, 2048)
+        self.fc3 = nn.Linear(2048, 5776)
+
+        self.convT1 = nn.ConvTranspose2d(4, 32, 3)       
+        self.convT2 = nn.ConvTranspose2d(32, 16, 3)
+        self.bnorm1 = nn.BatchNorm2d(16)
+        self.convT3 = nn.ConvTranspose2d(16, 8, 3)
+        self.convT4 = nn.ConvTranspose2d(8, 4, 3)
+        self.bnorm2 = nn.BatchNorm2d(4)
+        self.convT5 = nn.ConvTranspose2d(4, 1, 3)
         
+    #generating image from random noise
+    def forward(self, x):
+        pred = F.leaky_relu(self.fc1(x))
+        pred = F.leaky_relu(self.fc2(pred))
+        pred = F.leaky_relu(self.fc3(pred))
         
-#defines neural network object
+        pred = pred.reshape(-1, 4, 38, 38)
+        
+        pred = F.leaky_relu(self.convT1(pred))
+        pred = F.leaky_relu(self.bnorm1(self.convT2(pred)))
+        pred = F.leaky_relu(self.convT3(pred))
+        pred = F.leaky_relu(self.bnorm2(self.convT4(pred)))
+        pred = torch.sigmoid(self.convT5(pred))
+        
+        return pred
+        
+#initializes neural network object
 emotion_net = neural_net()
 
-#uploads weights previously trained on kaggle
+#initializes generator object
+generator = Generator()
+
+#uploads emotion net weights previously trained on kaggle
 state_dict = torch.load("emotion_net7.pth")
 
-#loads the weights to the neural network and turns the neural network to evaluation mode
+#loads the weights to the emotion net neural network and turns the neural network to evaluation mode for prediction
 emotion_net.load_state_dict(state_dict)
 emotion_net.eval()
+
+#uploads generator weights previously trained on kaggle
+generator_state_dict = torch.load("generator.pth")
+
+#loads the generator weights to the generator neural network and turns the generator to evaluation mode 
+generator.load_state_dict(generator_state_dict)
+generator.eval()
 
 #classification dict for the classificaiton
 class_dict = {0: 'fearful',
@@ -88,7 +130,18 @@ class_dict = {0: 'fearful',
 
 #starts running the application both locally and hosting it with ngrok
 app = Flask(__name__)
+#remove cache for images (so that generator can generate new images every time)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 run_with_ngrok(app)
+
+#also helps with removing the cache of images
+@app.after_request
+def add_header(response):
+    # response.cache_control.no_store = True
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '-1'
+    return response
 
 #creates the home page
 @app.route('/', methods = ["GET", "POST"])
@@ -169,6 +222,25 @@ def gen():
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+#page for generating images
+@app.route('/generating', methods = ['GET', 'POST'])
+def generating():
+  if request.method == "POST":
+    #generate noise to input into the generator
+    noise = torch.randn(1, 512)
+
+    #input noise into generator
+    image = generator(noise).reshape(48,48).detach().numpy()*255
+
+    #convert image to RGB
+    image = Image.fromarray(image).convert('RGB')
+
+    #save image as png
+    image.save('C:/RJoshi/Midyear Project/static/generated_image.png', 'PNG')
+    return render_template('generating.html', image = True)
+
+  return render_template('generating.html', image = False)
 
 #about page to show what the project is about
 @app.route('/about')
