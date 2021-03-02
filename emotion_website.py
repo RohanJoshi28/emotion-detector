@@ -237,7 +237,7 @@ def generating():
     image = Image.fromarray(image).convert('RGB')
 
     #save image as png
-    image.save('C:/RJoshi/Midyear Project/static/generated_image.png', 'PNG')
+    image.save('./static/generated_image.png', 'PNG')
     return render_template('generating.html', image = True)
 
   return render_template('generating.html', image = False)
